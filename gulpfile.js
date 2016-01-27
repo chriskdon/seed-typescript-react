@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var stylus = require('gulp-stylus');
-
+var notify = require("gulp-notify");
 var exorcist = require('exorcist');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
@@ -31,7 +31,8 @@ gulp.task('client-ts-build', function() {
 	return bundler.bundle()
 			.pipe(exorcist(config.publicPath + '/application.js.map'))
 			.pipe(source(config.app.result))
-			.pipe(gulp.dest(config.publicPath));
+			.pipe(gulp.dest(config.publicPath))
+			.pipe(notify("Typescript Built"));
 })
 
 /**
@@ -43,7 +44,8 @@ gulp.task('client-stylus-build', function() {
     .pipe(stylus())
 		.pipe(sourcemaps.write('.'))
 		.pipe(concat('app.bundle.css'))
-    .pipe(gulp.dest('web/css'));
+    .pipe(gulp.dest('web/css'))
+		.pipe(notify("Stylus Built"));
 });
 
 /**
@@ -53,7 +55,7 @@ gulp.task('client-build', ['client-ts-build', 'client-stylus-build']);
 
 gulp.task('default', ['client-build']);
 
-gulp.task('watch', function() {
+gulp.task('watch', ['client-ts-build', 'client-stylus-build'], function() {
 	gulp.watch('src/client/**/*', ['client-ts-build']);
-  gulp.watch('stylus/**/*.styl', ['client-stylus-build']);
+  gulp.watch('stylus/**/*', ['client-stylus-build']);
 });
