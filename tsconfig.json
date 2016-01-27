@@ -2,11 +2,13 @@
     "compileOnSave": false,
     "compilerOptions": {
         "module": "commonjs",
+        "target": "ES5",
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
         "out": "app.bundle.js",
-        "sourceMap": true
+        "sourceMap": true,
+        "jsx": "react"
     },
     "exclude": [
         "node_modules",

@@ -9,7 +9,19 @@
   "author": "Chris Kellendonk",
   "license": "ISC",
   "devDependencies": {
+    "browserify": "^13.0.0",
+    "exorcist": "^0.4.0",
     "gulp": "^3.9.0",
-    "gulp-typescript": "^2.10.0"
+    "gulp-babel": "^6.1.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-stylus": "^2.2.0",
+    "gulp-typescript": "^2.10.0",
+    "tsify": "^0.13.2",
+    "typescript": "^1.7.5",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "react-dom": "^0.14.6"
   }
 }
